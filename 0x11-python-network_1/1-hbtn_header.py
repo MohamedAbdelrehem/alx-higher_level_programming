@@ -1,14 +1,22 @@
 #!/usr/bin/python3
-"""This script fetches data from
-    https://alx-intranet.hbtn.io/status
 """
-
-
+Displays the value of the X-Request-Id variable
+found in the header of the response
+"""
 import urllib.request
+from sys import argv
 
-with urllib.request.urlopen("https://alx-intranet.hbtn.io/status") as response:
-    body = response.read()
-    print("Body response:")
-    print("\t- type: {}".format(type(body)))
-    print("\t- content: {}".format(body))
-    print("\t- utf8 content: {}".format(body.decode('utf-8')))
+
+def main(argv):
+    """
+    Method that takes in a URL, sends a request to the URL
+    and displays the value of the X-Request-Id variable
+    found in the header of the response
+    """
+    url = argv
+    with urllib.request.urlopen(url) as response:
+        headers = response.info()
+        print(headers['X-Request-Id'])
+
+if __name__ == "__main__":
+    main(argv[1])
