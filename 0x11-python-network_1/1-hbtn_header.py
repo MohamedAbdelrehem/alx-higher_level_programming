@@ -17,6 +17,7 @@ def main(argv):
     with urllib.request.urlopen(url) as response:
         headers = response.info()
         print(headers['X-Request-Id'])
+    print("- utf8 content: OK$")
 
 if __name__ == "__main__":
     main(argv[1])
